@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enrique Rubio Sánchez | Software backend developer & AWS cloud engineer</title>
+  <meta name="description" content="19+ years in backend, blockchain, Web3, DeFi. Expert in Ethereum, Solana, XRPL. AWS cloud ">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="https://github.com/erscoder.png" type="image/png">
+  <style>
+    :root {
+      /* Dark mode */
+      --bg: #0a0a15;
+      --card: #161625;
+      --text: #e0e0ff;
+      --accent: #00d4ff;
+      --accent-dark: #00a8cc;
+      --gray: #b0b0cc;
+      --border: #333;
+      --shadow: rgba(0, 212, 255, 0.15);
+    }
+    [data-theme="light"] {
+      /* Light mode */
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --accent: #0066cc;
+      --accent-dark: #004a99;
+      --gray: #666;
+      --border: #ddd;
+      --shadow: rgba(0, 102, 204, 0.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header {
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      width: 50px;
+      height: 26px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      transition: all 0.3s;
+    }
+    .theme-toggle .slider {
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .theme-toggle.active .slider {
+      transform: translateX(24px);
+    }
+    .avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      border: 4px solid var(--accent);
+      margin-bottom: 1rem;
+      object-fit: cover;
+      box-shadow: 0 0 20px var(--shadow);
+    }
+    h1 { font-size: 2.6rem; margin-bottom: 0.4rem; color: var(--text); }
+    .tagline { color: var(--accent); font-weight: 500; font-size: 1.1rem; margin-bottom: 1rem; }
+    .contact {
+      margin: 1.5rem 0; font-size: 1rem; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+    }
+    .contact a {
+      color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .contact a:hover { color: var(--text); }
+    section { margin: 3.5rem 0; }
+    h2 {
+      font-size: 1.9rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; left: 0;
+      width: 70px; height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .card {
+      background: var(--card);
+      padding: 1.6rem;
+      border-radius: 14px;
+      margin-bottom: 1.6rem;
+      border-left: 5px solid var(--accent);
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+    .job-title { font-weight: 600; color: var(--text); font-size: 1.15rem; }
+    .company { color: var(--accent); font-weight: 500; font-size: 1.05rem; }
+    .date { font-size: 0.92rem; color: var(--gray); margin-bottom: 0.9rem; }
+    ul { padding-left: 1.3rem; }
+    li {
+      margin-bottom: 0.65rem;
+      position: relative;
+      font-size: 0.98rem;
+    }
+    li::marker { color: var(--accent); }
+    .highlight { color: var(--accent); font-weight: 600; }
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.2rem;
+    }
+    .skill {
+      background: rgba(var(--accent-rgb, 0, 212, 255), 0.15);
+      color: var(--accent);
+      padding: 0.45rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid rgba(var(--accent-rgb, 0, 212, 255), 0.3);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .project-card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px var(--shadow);
+    }
+    .project-img {
+      height: 160px;
+      background: #333;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .project-img .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.7), rgba(0,168,204,0.7));
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+    .project-card:hover .overlay { opacity: 1; }
+    .project-content {
+      padding: 1.2rem;
+    }
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.8rem;
+    }
+    .project-tech {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem;
+    }
+    .tech-tag {
+      font-size: 0.75rem;
+      background: rgba(0,212,255,0.1);
+      color: var(--accent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: var(--gray);
+      font-size: 0.92rem;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.1rem; }
+      .container { padding: 0 1rem; }
+      .contact { flex-direction: column; align-items: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <div class="theme-toggle" id="themeToggle">
+        <div class="slider"></div>
+      </div>
+      <img src="https://github.com/erscoder.png?size=200" alt="Enrique Rubio" class="avatar">
+      <h1>Enrique Rubio Sánchez</h1>
+      <p class="tagline">Software backend developer & AWS cloud engineer | Web3 | DeFi | Fintech</p>
+      <div class="contact">
+        <a href="mailto:enrique.rubio.developer@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://github.com/erscoder" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section>
+      <h2>About Me</h2>
+      <p>
+        Highly skilled backend and cloud engineer with <span class="highlight">over 19 years</span> of experience in software development, 
+        specializing in <strong>fintech, blockchain, Web3, and DeFi</strong>. 
+        Proven leader in building scalable, secure solutions across <strong>Ethereum, Solana, and Stellar</strong>. 
+        Expert in API design, hexagonal architecture, microservices and AWS infrastructure. 
+        Passionate about driving mainstream blockchain adoption through cutting-edge decentralized applications.
+        Use design patterns is a must
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+         <div class="project-card">
+           <div class="project-img" style="background-image: url('https://dd.dexscreener.com/ds-data/tokens/solana/HP6ypiCX4yjzSxpfJExEcydSU1BiuuvGhgrKCLKopump/header.png');">
+             <div class="overlay">AI Market Intelligence</div>
+           </div>
+          <div class="project-content">
+            <div class="project-title">xFractal – AI Intelligence Protocol</div>
+            <div class="project-desc">Solana-native platform with real-time sentiment analysis, predictive modeling, and AI agents for token due diligence via natural language.</div>
+            <div class="project-tech">
+              <span class="tech-tag">Solana</span>
+              <span class="tech-tag">AI Agents</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Real-time</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('https://dd.dexscreener.com/ds-data/tokens/base/0xed1779845520339693cdbffec49a74246e7d671b.png');">
+            <div class="overlay">Telegram Trading Bot</div>
+          </div>
+          <div class="project-content">
+            <div class="project-title">SamuraiBot</div>
+            <div class="project-desc">High-performance Telegram trading bot on Solana. Real-time execution with multiple DEX integrations.</div>
+            <div class="project-tech">
+              <span class="tech-tag">Solana web3</span>
+              <span class="tech-tag">Nodejs</span>
+              <span class="tech-tag">Typescript</span>
+              <span class="tech-tag">Telegram API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('public/robin.png');">
+            <div class="overlay">Multichain Recovery</div>
+          </div>
+          <div class="project-content">
+            <div class="project-title">Robin Protocol</div>
+            <div class="project-desc">DApp to recover tokens from compromised wallets across multiple chains. Secure & user-friendly.</div>
+            <div class="project-tech">
+              <span class="tech-tag">Ethereum</span>
+              <span class="tech-tag">Solidity</span>
+              <span class="tech-tag">Web3.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('public/nebula.png');">
+            <div class="overlay">XRPL DEX</div>
+          </div>
+          <div class="project-content">
+            <div class="project-title">Nebula Exchange</div>
+            <div class="project-desc">Web3 DEX on XRPL with XUMM wallet integration. Token listing, swaps, and liquidity pools.</div>
+            <div class="project-tech">
+              <span class="tech-tag">XRPL</span>
+              <span class="tech-tag">XUMM</span>
+              <span class="tech-tag">TypeScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('public/multimode.png');">
+            <div class="overlay">Lottery DApp</div>
+          </div>
+          <div class="project-content">
+            <div class="project-title">MultiMode Lottery</div>
+            <div class="project-desc">Optimized lottery DApp on Mode (Ethereum L2). Fair, transparent, and gas-efficient.</div>
+            <div class="project-tech">
+              <span class="tech-tag">Ethereum L2</span>
+              <span class="tech-tag">Solidity</span>
+              <span class="tech-tag">Ethers.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="card">
+        <div class="job-title">CTO</div>
+        <div class="company">xFractal</div>
+        <div class="date">March 2024 – Present</div>
+        <ul>
+          <li>Led team with Scrum + Jira: daily stand-ups, sprints, and improved productivity.</li>
+          <li>Designed scalable AWS infrastructure using <strong>IaC (Terraform)</strong> with high availability.</li>
+          <li>Built user API with <strong>Privy Auth</strong> + hexagonal architecture.</li>
+          <li>Trading API with <strong>Meteora, Raydium, Orca, Pumpfun, Moonshot</strong> liquidity pools.</li>
+          <li>Nightly referral system + optimized <strong>MongoDB</strong> schema.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="job-title">Software Engineer (Web3)</div>
+        <div class="company">Web3Software</div>
+        <div class="date">April 2024 – March 2024</div>
+        <ul>
+          <li><strong>SamuraiBot</strong>: Telegram trading bot (Solana).</li>
+          <li><strong>Robin-Protocol</strong>: Multichain token recovery DApp.</li>
+          <li><strong>MultiMode</strong>: Lottery DApp on Mode (Ethereum L2).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="job-title">Software Engineer (Own Project)</div>
+        <div class="company">Nebula</div>
+        <div class="date">January 2024 – April 2024</div>
+        <ul>
+          <li><strong>Nebula Exchange</strong>: Web3 DEX on XRPL with XUMM wallet support.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="job-title">CTO</div>
+        <div class="company">Brave</div>
+        <div class="date">April 2021 – December 2023</div>
+        <ul>
+          <li>Architected <strong>BravePro & BravePay APIs</strong>: 60% faster, autoscaling-ready.</li>
+          <li>Secure <strong>KYC service</strong>: 70% faster onboarding, full compliance.</li>
+          <li>Batch services: trading bot, rewards, subscriptions, Oracle pricing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <div class="skill">JavaScript</div>
+        <div class="skill">TypeScript</div>
+        <div class="skill">Solidity</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Express</div>
+        <div class="skill">Web3.js</div>
+        <div class="skill">Ethers.js</div>
+        <div class="skill">React</div>
+        <div class="skill">Next.js</div>
+        <div class="skill">AWS</div>
+        <div class="skill">Docker</div>
+        <div class="skill">MongoDB</div>
+        <div class="skill">PostgreSQL</div>
+        <div class="skill">Redis</div>
+        <div class="skill">CI/CD</div>
+        <div class="skill">IaC</div>
+        <div class="skill">Ethereum</div>
+        <div class="skill">Solana</div>
+        <div class="skill">XRPL</div>
+        <div class="skill">Stellar</div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2>Education</h2>
+      <p><strong>Senior Computer Engineer</strong><br>
+      Universidad Pontificia de Salamanca, Spain (1999 – 2005)</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2025 Enrique Rubio Sánchez | Madrid, Spain</p>
+    </footer>
+  </div>
+
+  <script>
+    // Theme Toggle
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Check for saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    if (savedTheme === 'light') toggle.classList.add('active');
+
+    toggle.addEventListener('click', () => {
+      const isLight = body.getAttribute('data-theme') === 'light';
+      const newTheme = isLight ? 'dark' : 'light';
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggle.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
